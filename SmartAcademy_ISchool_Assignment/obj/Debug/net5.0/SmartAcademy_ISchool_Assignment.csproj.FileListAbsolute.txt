@@ -1,0 +1,16 @@
+C:\Users\Nika\source\repos\SmartAcademy_ISchool_Assignment\SmartAcademy_ISchool_Assignment\bin\Debug\net5.0\SmartAcademy_ISchool_Assignment.exe
+C:\Users\Nika\source\repos\SmartAcademy_ISchool_Assignment\SmartAcademy_ISchool_Assignment\bin\Debug\net5.0\SmartAcademy_ISchool_Assignment.deps.json
+C:\Users\Nika\source\repos\SmartAcademy_ISchool_Assignment\SmartAcademy_ISchool_Assignment\bin\Debug\net5.0\SmartAcademy_ISchool_Assignment.runtimeconfig.json
+C:\Users\Nika\source\repos\SmartAcademy_ISchool_Assignment\SmartAcademy_ISchool_Assignment\bin\Debug\net5.0\SmartAcademy_ISchool_Assignment.runtimeconfig.dev.json
+C:\Users\Nika\source\repos\SmartAcademy_ISchool_Assignment\SmartAcademy_ISchool_Assignment\bin\Debug\net5.0\SmartAcademy_ISchool_Assignment.dll
+C:\Users\Nika\source\repos\SmartAcademy_ISchool_Assignment\SmartAcademy_ISchool_Assignment\bin\Debug\net5.0\ref\SmartAcademy_ISchool_Assignment.dll
+C:\Users\Nika\source\repos\SmartAcademy_ISchool_Assignment\SmartAcademy_ISchool_Assignment\bin\Debug\net5.0\SmartAcademy_ISchool_Assignment.pdb
+C:\Users\Nika\source\repos\SmartAcademy_ISchool_Assignment\SmartAcademy_ISchool_Assignment\obj\Debug\net5.0\SmartAcademy_ISchool_Assignment.csproj.AssemblyReference.cache
+C:\Users\Nika\source\repos\SmartAcademy_ISchool_Assignment\SmartAcademy_ISchool_Assignment\obj\Debug\net5.0\SmartAcademy_ISchool_Assignment.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Nika\source\repos\SmartAcademy_ISchool_Assignment\SmartAcademy_ISchool_Assignment\obj\Debug\net5.0\SmartAcademy_ISchool_Assignment.AssemblyInfoInputs.cache
+C:\Users\Nika\source\repos\SmartAcademy_ISchool_Assignment\SmartAcademy_ISchool_Assignment\obj\Debug\net5.0\SmartAcademy_ISchool_Assignment.AssemblyInfo.cs
+C:\Users\Nika\source\repos\SmartAcademy_ISchool_Assignment\SmartAcademy_ISchool_Assignment\obj\Debug\net5.0\SmartAcademy_ISchool_Assignment.csproj.CoreCompileInputs.cache
+C:\Users\Nika\source\repos\SmartAcademy_ISchool_Assignment\SmartAcademy_ISchool_Assignment\obj\Debug\net5.0\SmartAcademy_ISchool_Assignment.dll
+C:\Users\Nika\source\repos\SmartAcademy_ISchool_Assignment\SmartAcademy_ISchool_Assignment\obj\Debug\net5.0\ref\SmartAcademy_ISchool_Assignment.dll
+C:\Users\Nika\source\repos\SmartAcademy_ISchool_Assignment\SmartAcademy_ISchool_Assignment\obj\Debug\net5.0\SmartAcademy_ISchool_Assignment.pdb
+C:\Users\Nika\source\repos\SmartAcademy_ISchool_Assignment\SmartAcademy_ISchool_Assignment\obj\Debug\net5.0\SmartAcademy_ISchool_Assignment.genruntimeconfig.cache
