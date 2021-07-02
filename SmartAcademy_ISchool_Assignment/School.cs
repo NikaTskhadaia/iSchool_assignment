@@ -14,30 +14,34 @@ namespace SmartAcademy_ISchool_Assignment
 
         public void AddPerson(string name)
         {
+            if (string.IsNullOrEmpty(name.Trim()))
+            {
+                Console.WriteLine("Name should not be empty");
+                return;
+            }
             _people.Add(name, default);
             Console.WriteLine($"{name} was added to the school.");
         }
 
         public void GetPersonPoint(string name)
         {
-            try
+            if (_people.ContainsKey(name))
             {
                 Console.WriteLine($"{name} has {_people[name]} point(s)");
+                return;
             }
-            catch (KeyNotFoundException)
-            {
-                Console.WriteLine($"There is no one with the name \"{name}\" in the school.");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Something went wrong {ex.GetType()}. Please try again.");
-            }
+            Console.WriteLine($"There is no one with the name \"{name}\" in the school.");
         }
 
         public void RemovePerson(string name)
         {
-            _people.Remove(name);
-            Console.WriteLine($"{name} was removed from the school.");
+            if (_people.ContainsKey(name))
+            {
+                _people.Remove(name);
+                Console.WriteLine($"{name} was removed from the school.");
+                return;
+            }
+            Console.WriteLine($"There is no one with the name \"{name}\" in the school.");
         }
 
         public void SetPersonPoint(string name, int point)

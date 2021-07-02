@@ -7,10 +7,10 @@ namespace SmartAcademy_ISchool_Assignment
         static void Main(string[] args)
         {
             School school = new();
-            school.AddPerson("Nika");
+            school.AddPerson("");
             school.SetPersonPoint("Nika", 10);
 
-            school.GetPersonPoint("nika");
+            school.GetPersonPoint("");
 
             school.RemovePerson("Nika");
 
