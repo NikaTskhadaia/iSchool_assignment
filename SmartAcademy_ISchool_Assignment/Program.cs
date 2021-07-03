@@ -1,4 +1,6 @@
 ﻿using System;
+using SmartAcademy_ISchool_Assignment.Models;
+using SmartAcademy_ISchool_Assignment.Repository;
 
 namespace SmartAcademy_ISchool_Assignment
 {
@@ -6,16 +8,11 @@ namespace SmartAcademy_ISchool_Assignment
     {
         static void Main(string[] args)
         {
-            School school = new();
-            school.AddPerson("");
-            school.SetPersonPoint("Nika", 10);
+            ISchoolRepository repo = new SchoolRepository();
 
-            school.GetPersonPoint("");
+            Student student = new() { FullName = "Nika Tskhadaia", Id = "123456", Age = 12, Gender = Gender.Male};
 
-            school.RemovePerson("Nika");
-
-            school.GetPersonPoint("nika");
-            school.SetPersonPoint("Nika", 8);
+            repo.AddStudent(student);
 
             Console.ReadKey();
         }
