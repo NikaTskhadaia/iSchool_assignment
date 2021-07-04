@@ -3,6 +3,7 @@ using SmartAcademy_ISchool_Assignment.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace SmartAcademy_ISchool_Assignment.Repository
 {
@@ -15,47 +16,83 @@ namespace SmartAcademy_ISchool_Assignment.Repository
             _db = new();
         }
 
-        public void AddStudent(Student student)
+        public int AddStudent(Student student)
         {
-            _db.Students.Add(student);
-            _db.SaveChanges();
+            try
+            {
+                _db.Students.Add(student);
+                _db.SaveChanges();
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                return 1;
+            }
         }
 
-        public void RemoveStudent(string studentId)
+        public int RemoveStudent(string studentId)
         {
             Student student = _db.Students.Where(s => s.Id == studentId).FirstOrDefault();
             if (student is not null)
             {
                 _db.Students.Remove(student);
-                _db.SaveChangesAsync();
+                _db.SaveChanges();
+                return 0;
+            }
+            return 1;
+        }
+
+        public int AddSubject(Subject subject)
+        {
+            try
+            {
+                _db.Subjects.Add(subject);
+                _db.SaveChanges();
+                return 0;
+            }
+            catch (Exception)
+            {
+                return 1;
             }
         }
 
-        public void AddSubject(Subject subject)
-        {
-            _db.Subjects.Add(subject);
-            _db.SaveChangesAsync();
-        }
-
-        public void AddStudentToSubject(Subject subject, string studentId)
+        public int AddStudentToSubject(Subject subject, string studentId)
         {
             Student student = _db.Students.Find(studentId);
             if (student is not null && _db.Subjects.Contains(subject))
             {
-                StudentsToSubject studentsToSubject = new() { Student = student, Subject = subject, Point = default };
-                _db.StudentsToSubjects.Add(studentsToSubject);
-                _db.SaveChangesAsync();
+                try
+                {
+                    StudentsToSubject studentsToSubject = new() { StudentId = studentId, SubjectName = subject.Name, Point = default };
+                    _db.StudentsToSubjects.Add(studentsToSubject);
+                    _db.SaveChanges();
+                    return 1;
+                }
+                catch (Exception)
+                {
+                    return 1;
+                }
             }
+            return 1;
         }
 
-        public void SetStudentPoint(string studentId, Subject subject, int point)
+        public int SetStudentPoint(string studentId, Subject subject, int point)
         {
             var record = _db.StudentsToSubjects.Where(q => q.StudentId == studentId && q.SubjectName == subject.Name).FirstOrDefault();
             if (record is not null)
             {
-                record.Point = point;
-                _db.SaveChangesAsync();
+                try
+                {
+                    record.Point = point;
+                    _db.SaveChanges();
+                    return 0;
+                }
+                catch (Exception)
+                {
+                    return 1;
+                }
             }
+            return 1;
         }
 
         public int? GetStudentPoint(string studentId, Subject subject)
@@ -66,31 +103,21 @@ namespace SmartAcademy_ISchool_Assignment.Repository
 
         public Dictionary<Subject, int?> GetStudentPoints(string studentId)
         {
-            var result = _db.StudentsToSubjects.Where(q => q.StudentId == studentId);
-            Dictionary<Subject, int?> resultCollection = new();
-            foreach (var item in result)
-            {
-                resultCollection.Add(item.Subject, item.Point);
-            }
-            return resultCollection;
+            var result = _db.StudentsToSubjects.Where(q => q.StudentId == studentId).Include(q => q.Subject).ToDictionary(q => q.Subject, q => q.Point);
+            return result;
         }
 
         public Dictionary<Student, int?> GetStudentsPoints(Subject subject)
         {
-            var result = _db.StudentsToSubjects.Where(q => q.SubjectName == subject.Name);
-            Dictionary<Student, int?> resultCollection = new();
-            foreach (var item in result)
-            {
-                resultCollection.Add(item.Student, item.Point);
-            }
-            return resultCollection;
+            var result = _db.StudentsToSubjects.Where(q => q.SubjectName == subject.Name).Include(q => q.Student).ToDictionary(q => q.Student, q => q.Point);
+            return result;
         }
 
-        public Dictionary<Subject, Dictionary<Student, int?>> GetStudentsPoints()
+        public Dictionary<string, Dictionary<Student, int?>> GetStudentsPoints()
         {
-            Dictionary<Subject, Dictionary<Student, int?>> finalresultCollection = new();
+            Dictionary<string, Dictionary<Student, int?>> finalresultCollection = new();
 
-            var result = _db.StudentsToSubjects.GroupBy(q => q.Subject);
+            var result = _db.StudentsToSubjects.Include(q => q.Student).AsEnumerable().GroupBy(q => q.SubjectName);  
 
             foreach (var item in result)
             {

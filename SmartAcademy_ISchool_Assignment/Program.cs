@@ -1,6 +1,9 @@
-﻿using System;
-using SmartAcademy_ISchool_Assignment.Models;
+﻿using SmartAcademy_ISchool_Assignment.Models;
 using SmartAcademy_ISchool_Assignment.Repository;
+using SmartAcademy_ISchool_Assignment.Services;
+using System;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace SmartAcademy_ISchool_Assignment
 {
@@ -8,13 +11,28 @@ namespace SmartAcademy_ISchool_Assignment
     {
         static void Main(string[] args)
         {
-            ISchoolRepository repo = new SchoolRepository();
+            Console.WriteLine("Press 'Esc' button to exit the program.");
 
-            Student student = new() { FullName = "Nika Tskhadaia", Id = "123456", Age = 12, Gender = Gender.Male};
+            ConsoleHelper consoleHelper = new(new SchoolRepository());
 
-            repo.AddStudent(student);
 
-            Console.ReadKey();
+            while(true)
+            {
+                ConsoleKey key = Console.ReadKey().Key;
+                if (key == ConsoleKey.Escape)
+                {
+                    break;
+                }
+
+                string command = key.ToString() + Console.ReadLine();
+                consoleHelper.EvalConsoleCommand(command);
+                Console.WriteLine("\nDone!");
+            }
+            
+
+
         }
+
+        
     }
 }

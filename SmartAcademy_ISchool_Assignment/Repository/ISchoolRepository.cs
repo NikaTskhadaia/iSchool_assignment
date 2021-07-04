@@ -10,26 +10,26 @@ namespace SmartAcademy_ISchool_Assignment.Repository
         /// </summary>
         /// <param name="student">ბაზაში დასამატებელი სტუდენტი</param>
         /// <returns>სტუდენტის </returns>
-        void AddStudent(Student student);
+        int AddStudent(Student student);
 
         /// <summary>
         /// წაშლის სტუდენტს ბაზიდან
         /// </summary>
         /// <param name="studentiId">სტუდენტის პირადი ნომერი</param>
-        void RemoveStudent(string studentiId);
+        int RemoveStudent(string studentiId);
 
         /// <summary>
         /// ახალი საგნის დამატება ბაზაში
         /// </summary>
         /// <param name="subject"></param>
-        void AddSubject(Subject subject);
+        int AddSubject(Subject subject);
 
         /// <summary>
         /// სტუდენტისთვის საგნის დამატება
         /// </summary>
         /// <param name="subject">საგანი</param>
         /// <param name="studentId">სტუდენტის პირადი ნომერი</param>
-        void AddStudentToSubject(Subject subject, string studentId);
+        int AddStudentToSubject(Subject subject, string studentId);
 
         /// <summary>
         /// სტუდენტისთვის ქულის მინიჭება მითითბულ საგანში
@@ -37,7 +37,7 @@ namespace SmartAcademy_ISchool_Assignment.Repository
         /// <param name="studentId">სტუდენტის პირადი ნომერი</param>
         /// <param name="subject">საგანი</param>
         /// <param name="point">ქულა</param>
-        void SetStudentPoint(string studentId, Subject subject, int point);
+        int SetStudentPoint(string studentId, Subject subject, int point);
 
         /// <summary>
         /// მოძებნის ბაზაში სტუდენტის ქულებს
@@ -65,6 +65,6 @@ namespace SmartAcademy_ISchool_Assignment.Repository
         /// ამოიღებს ბაზიდან ყველა საგნის დასახელებას და ამ საგანში ჩაწერილი სტუდენტების სია შესაბამისი ქულებით
         /// </summary>
         /// <returns>ყველა საგნის დასახელება და ამ საგანში ჩაწერილი სტუდენტების სია შესაბამისი ქულებით</returns>
-        Dictionary<Subject, Dictionary<Student, int?>> GetStudentsPoints();
+        Dictionary<string, Dictionary<Student, int?>> GetStudentsPoints();
     }
 }
